@@ -1,6 +1,6 @@
 <h2><%= @passenger.name %>'s Details</h2>
-<p>Find me in app/views/passengers/show.html.erb</p>
 
+<h3> Total Money Spent: $<%= @passenger.calculate_total_charged %></h3>
 <h3>List of Trips</h3>
 <ol>
   <% @passenger.trips.each do |trip| %>
