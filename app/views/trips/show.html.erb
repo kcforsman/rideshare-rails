@@ -1,2 +1,18 @@
-<h1>Trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p>
+<h1>Trip <%= @trip.id %></h1>
+
+<ul>
+  <li>
+    <%= link_to 'edit', edit_trip_path(@trip.id)%>
+  </li>
+  <li>
+    <%= link_to 'delete', trip_path(@trip.id), method: :delete %>
+  </li>
+</ul>
+
+<ul>
+  <li>Driver: <%= @trip.driver.name %></li>
+  <li>Passenger: <%= @trip.passenger.name %></li>
+  <li>Rating: <%= @trip.rating %></li>
+  <li>Cost: $<%= ((@trip.cost.to_f)/100).round(2) %></li>
+
+</ul>
