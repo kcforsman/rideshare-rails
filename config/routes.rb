@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   post '/drivers', to: "drivers#create"
   get '/drivers/:id/edit',  to: "drivers#edit", as: "edit_driver"
 
-  get '/drivers/:id', to: "driver#show", as:"driver"
+  get '/drivers/:id', to: "drivers#show", as:"driver"
 
-  patch '/drivers/:id', to: "driver#update"
-  delete '/drivers/:id', to: "driver#destroy"
+  patch '/drivers/:id', to: "drivers#update"
+  delete '/drivers/:id', to: "drivers#destroy"
 
 # routes for passengers
   get '/passengers', to: "passengers#index", as: "passengers"
@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   post '/passengers', to: "passengers#create"
   get '/passengers/:id/edit',  to: "passengers#edit", as: "edit_passenger"
 
-  get '/passengers/:id', to: "passenger#show", as:"passenger"
+  get '/passengers/:id', to: "passengers#show", as:"passenger"
 
-  patch '/passengers/:id', to: "passenger#update"
-  delete '/passengers/:id', to: "passenger#destroy"
+  patch '/passengers/:id', to: "passengers#update"
+  delete '/passengers/:id', to: "passengers#destroy"
 
 
 

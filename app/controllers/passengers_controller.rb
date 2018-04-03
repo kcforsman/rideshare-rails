@@ -1,15 +1,16 @@
 class PassengersController < ApplicationController
   def index
-    @passenger = Passenger.all
+    @passengers = Passenger.all
+  end
+
+  def show
+    @passenger = Passenger.find_by(id: params[:id])
   end
 
   def edit
   end
 
   def delete
-  end
-
-  def show
   end
 
   def create
