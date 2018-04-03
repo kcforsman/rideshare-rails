@@ -8,15 +8,21 @@ class PassengersController < ApplicationController
   end
 
   def new
-    # @passenger = Passenger.new
+    @passenger = Passenger.new
+
   end
 
   def create
-
+    @passenger = Passenger.new(passenger_params)
+    if @passenger.save
+      redirect_to passengers_path
+    else
+      render :new
+    end
   end
 
   def edit
-    # @passenger = Passenger.find_by(id: params[:id])
+    @passenger = Passenger.find_by(id: params[:id])
   end
 
   def update
@@ -32,5 +38,10 @@ class PassengersController < ApplicationController
     else
       render :show
     end
+  end
+
+  private
+  def passenger_params
+    params.require(:passenger).permit(:name,:phone_num)
   end
 end
