@@ -23,6 +23,14 @@ class PassengersController < ApplicationController
   end
 
   def destroy
+    @passenger = Passenger.find_by(id: params[:id])
+    @passenger.trips.each do |trip|
+      trip.destroy
+    end
+    if @passenger.destroy
+      redirect_to passengers_path
+    else
+      render :show
+    end
   end
-
 end
