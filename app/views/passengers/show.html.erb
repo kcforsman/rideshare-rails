@@ -1,5 +1,14 @@
 <h2><%= @passenger.name %>'s Details</h2>
 
+<ul>
+  <li>
+    <%= link_to 'edit', edit_passenger_path(@passenger.id)%>
+  </li>
+  <li>
+    <%= link_to 'delete', passenger_path(@passenger.id), method: :delete %>
+  </li>
+</ul>
+
 <h3> Total Money Spent: $<%= @passenger.calculate_total_charged %></h3>
 <h3>List of Trips</h3>
 <ol>

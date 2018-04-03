@@ -7,18 +7,22 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find_by(id: params[:id])
   end
 
-  def edit
-  end
-
-  def delete
+  def new
+    # @passenger = Passenger.new
   end
 
   def create
+
   end
 
-  def new
+  def edit
+    # @passenger = Passenger.find_by(id: params[:id])
   end
 
   def update
   end
+
+  def destroy
+  end
+
 end
