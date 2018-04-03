@@ -1,2 +1,11 @@
-<h1>Passengers#show</h1>
+<h2><%= @passenger.name %>'s Details</h2>
 <p>Find me in app/views/passengers/show.html.erb</p>
+
+<h3>List of Trips</h3>
+<ol>
+  <% @passenger.trips.each do |trip| %>
+    <li>
+      Trip ID - <%= trip.id %> :: Driver - <%= trip.driver.name %>
+    </li>
+  <% end %>
+</ol>
