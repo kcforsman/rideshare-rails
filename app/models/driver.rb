@@ -7,4 +7,15 @@ class Driver < ApplicationRecord
     end
     return (total_earned/100).round(2)
   end
+
+  def calculate_rating_average
+    total_ratings = 0
+    number_of_rating = 0
+    self.trips.each do |trip|
+      next if trip.rating.nil?
+      total_ratings += trip.rating
+      number_of_rating += 1
+    end
+    (total_ratings.to_f / number_of_rating).round(2)
+  end
 end
