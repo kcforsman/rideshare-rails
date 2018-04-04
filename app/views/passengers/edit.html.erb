@@ -1,1 +1,14 @@
+<%if @passenger.errors.any? %>
+    <ul>
+      <% @passenger.errors.each do |column,message| %>
+      <li>
+        <%=column.capitalize %> <%= message %>
+      </li>
+      <%end %>
+    </ul>
+  <%end%>
+
+
+
+
 <%= render partial: "form", locals: {page_title: "Edit #{@passenger.name}" }%>
