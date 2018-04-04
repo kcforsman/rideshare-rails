@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
 
 #routes for trips
-  delete '/trips/:id', to: "trips#destroy"
-
   resources :trips, except: [:index]
 
 # routes for drivers
-  delete '/drivers/:id', to: "drivers#destroy"
-
-  resources :drivers
+  resources :drivers do
+    resources :trips, only: [:show, :destroy]
+  end
 
 # routes for passengers
   resources :passengers do
-    resources :trips, only: [:index, :show, :destroy, :new, :create]
+    resources :trips, only: [:show, :destroy, :create]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

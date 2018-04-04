@@ -1,12 +1,17 @@
 class TripsController < ApplicationController
 
   def show
+    if params[:driver_id]
+      @driver = Driver.find_by(id: params[:driver_id])
+    elsif params[:passenger_id]
+      @passenger = Passenger.find_by(id: params[:passenger_id])
+    end
     @trip = Trip.find_by(id: params[:id])
   end
 
-  def new
-    @trip = Trip.new
-  end
+  # def new
+  #   @trip = Trip.new
+  # end
 
   def create
     if params[:passenger_id]
@@ -31,8 +36,15 @@ class TripsController < ApplicationController
 
   def destroy
     @trip = Trip.find_by(id: params[:id])
+    if params[:driver_id]
+      path = driver_path(params[:driver_id])
+    elsif params[:passenger_id]
+      path = passenger_path(params[:passenger_id])
+    else
+      path = drivers_path
+    end
     if @trip.destroy
-      redirect_to drivers_path
+      redirect_to path
     else
       render :show
     end

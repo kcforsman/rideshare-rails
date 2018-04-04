@@ -16,7 +16,7 @@
 <ol>
   <% @passenger.trips.each do |trip| %>
     <li>
-      <%= link_to "Trip #{trip.id}", trip_path(trip.id) %> :: Driver - <%= trip.driver.name %>
+      <%= link_to "Trip #{trip.id}", passenger_trip_path(@passenger.id, trip.id) %> :: Driver - <%= trip.driver.name %>
     </li>
   <% end %>
 </ol>
