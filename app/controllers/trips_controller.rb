@@ -40,8 +40,6 @@ class TripsController < ApplicationController
       path = driver_path(params[:driver_id])
     elsif params[:passenger_id]
       path = passenger_path(params[:passenger_id])
-    else
-      path = drivers_path
     end
     if @trip.destroy
       redirect_to path
