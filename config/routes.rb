@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :drivers
 
 # routes for passengers
-  resources :passengers
+  resources :passengers do
+    resources :trips, only: [:index, :show, :destroy, :new, :create]
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

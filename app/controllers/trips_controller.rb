@@ -9,7 +9,17 @@ class TripsController < ApplicationController
   end
 
   def create
-    # @trip = Trip.new(trip_params)
+    if params[:passenger_id]
+      passenger = Passenger.find_by(id: params[:passenger_id])
+      trip = Trip.create_new_trip(passenger)
+      if trip.save
+        redirect_to passenger_path(params[:passenger_id])
+      else
+        # needs to display an error message
+        render passenger_path(params[:passenger_id])
+      end
+      # display some error to let them know it did work
+    end
   end
 
   def edit
