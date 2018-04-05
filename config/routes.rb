@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root 'homepage#index'
+  resources :homepage, only: [:index]
+
 # routes for drivers
   resources :drivers do
     resources :trips, only: [:show, :destroy]
@@ -7,7 +10,7 @@ Rails.application.routes.draw do
 
 # routes for passengers
   resources :passengers do
-    resources :trips, only: [:show, :destroy, :create, :edit, :update,]
+    resources :trips, only: [:show, :destroy, :create, :edit, :update]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

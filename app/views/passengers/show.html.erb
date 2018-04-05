@@ -9,7 +9,12 @@
   </li>
 </ul>
 
-<h3><%= link_to "Request a Trip", passenger_trips_path(@passenger.id), method: :post %>
+<h3>
+  <% if @passenger.check_for_unrated_trip %>
+    <%= link_to "Request a Trip", passenger_trips_path(@passenger.id), method: :post %>
+  <% end %>
+</h3>
+
 
 <h3> Total Money Spent: $<%= @passenger.calculate_total_charged %></h3>
 <h3>List of Trips</h3>
