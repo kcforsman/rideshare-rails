@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :drivers do
     resources :trips, only: [:show, :destroy]
   end
+  patch 'drivers/:id/available', to:'drivers#unavailable', as: 'available_driver'
+  patch 'drivers/:id/unavailable', to:'drivers#unavailable', as: 'unavailable_driver'
 
 # routes for passengers
   resources :passengers do

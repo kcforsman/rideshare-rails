@@ -10,6 +10,13 @@
 </ul>
 
 
+<%if @driver.driver_status.nil?%>
+    <%=link_to "Available Driver", available_driver_path(@driver.id), :id => "available_driver", method: :patch%>
+<%else%>
+  <%= link_to "Unavailable Driver", unavailable_driver_path(@driver.id), :id => "unavailable_driver", method: :patch%>
+  <%end%>
+
+
 <h3> Total Money Earned: $<%= @driver.calculate_total_earned %></h3>
 <h3> Average Rating: <%= @driver.calculate_rating_average %></h3>
 <h3>List of Trips</h3>
