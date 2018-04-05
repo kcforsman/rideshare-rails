@@ -9,10 +9,6 @@ class TripsController < ApplicationController
     @trip = Trip.find_by(id: params[:id])
   end
 
-  # def new
-  #   @trip = Trip.new
-  # end
-
   def create
     if params[:passenger_id]
       passenger = Passenger.find_by(id: params[:passenger_id])
@@ -29,12 +25,20 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(id: params[:id])
+    @passenger = params[:passenger_id]
+    if @passenger
+      if @trip.update(rating: nil)
+        redirect_to passenger_trip_path(params[:passenger_id], params[:id])
+      else
+        render :show
+      end
+    end
   end
 
   def update
     @trip = Trip.find_by(id: params[:id])
     if params[:passenger_id]
-      path = passenger_path(params[:passenger_id])
+      path = passenger_trip_path(params[:passenger_id], params[:id])
     else
       path = trip_path(params[:id])
     end

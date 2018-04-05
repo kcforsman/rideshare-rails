@@ -2,9 +2,6 @@
 
 <ul>
   <li>
-    <%= link_to 'edit', edit_trip_path(@trip.id)%>
-  </li>
-  <li>
     <% if @driver %>
       <%= link_to 'delete', driver_trip_path(@driver.id, @trip.id), method: :delete %>
     <% elsif @passenger %>
@@ -20,10 +17,13 @@
   <li>Driver: <%= link_to @trip.driver.name, driver_path(@trip.driver_id) %></li>
   <li>Passenger: <%= link_to @trip.passenger.name, passenger_path(@trip.passenger_id) %></li>
   <li>
-    <% if @trip.rating.nil? %>
+    <% if @passenger && @trip.rating.nil? %>
       <%= render partial: "edit_rating" %>
     <% else %>
       Rating: <%= @trip.rating %>
+      <% if @passenger %>
+        <%= link_to 'edit', edit_passenger_trip_path(@passenger.id, @trip.id) %>
+      <% end %>
     <% end %>
   </li>
   <li>Cost: $<%= ((@trip.cost.to_f)/100).round(2) %></li>
