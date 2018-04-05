@@ -1,6 +1,7 @@
 <%=form_for [@passenger, @trip] do |f| %>
 
-<%= f.label :rating %>:
-<%= f.select :rating, (1..5) %>
-<%= f.submit %>
+  <%= f.label :rating %>:
+  <%= f.select :rating, (1..5) %>
+  <%= f.submit %>
+
 <%end%>

@@ -17,8 +17,10 @@
   <li>Driver: <%= link_to @trip.driver.name, driver_path(@trip.driver_id) %></li>
   <li>Passenger: <%= link_to @trip.passenger.name, passenger_path(@trip.passenger_id) %></li>
   <li>
-    <% if @passenger && @trip.rating.nil? %>
+    <% if @passenger && ( @trip.rating.nil? || @edit == true ) %>
       <%= render partial: "edit_rating" %>
+    <% elsif @driver && @trip.rating.nil? %>
+      No Rating Recorded
     <% else %>
       Rating: <%= @trip.rating %>
       <% if @passenger %>

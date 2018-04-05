@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
 
   def show
+    @edit = true if params[:edit]
     if params[:driver_id]
       @driver = Driver.find_by(id: params[:driver_id])
     elsif params[:passenger_id]
@@ -25,13 +26,10 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(id: params[:id])
-    @passenger = params[:passenger_id]
-    if @passenger
-      if @trip.update(rating: nil)
-        redirect_to passenger_trip_path(params[:passenger_id], params[:id])
-      else
-        render :show
-      end
+    if params[:passenger_id]
+      redirect_to passenger_trip_path(params[:passenger_id], params[:id], edit: true)
+    else
+      render :show
     end
   end
 
