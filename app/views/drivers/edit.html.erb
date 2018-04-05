@@ -1,1 +1,12 @@
+<%if @driver.errors.any? %>
+    <ul>
+      <% @driver.errors.each do |column,message| %>
+      <li>
+        <%=column.capitalize %> <%= message %>
+      </li>
+      <%end %>
+    </ul>
+  <%end%>
+
+
 <%= render partial: "form", locals: {page_title: "Edit #{@driver.name}" }%>

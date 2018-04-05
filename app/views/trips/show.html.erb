@@ -5,7 +5,7 @@
     <% if @driver %>
       <%= link_to 'delete', driver_trip_path(@driver.id, @trip.id), method: :delete %>
     <% elsif @passenger %>
-      <%= link_to 'delete', passenger_trip_path(@passenger.id, @trip.id), method: :delete %>
+      <%= link_to 'delete', passenger_trip_path(@passenger.id, @trip.id), method: :delete, data: {confirm: "Are you sure?"} %>
     <% end %>
   </li>
 </ul>
