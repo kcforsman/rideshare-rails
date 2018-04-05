@@ -6,8 +6,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Nixie+One" rel="stylesheet">
   </head>
-
+  <body>
     <nav>
       <ul>
         <li><%=link_to "Home", root_path %></li>
@@ -17,7 +18,8 @@
         <li><%=link_to "Create new driver", new_driver_path %></li>
       </ul>
     </nav>
-  <body>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
