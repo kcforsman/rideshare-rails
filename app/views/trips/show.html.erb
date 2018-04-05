@@ -19,7 +19,13 @@
   <li>Date: <%= @trip.date %></li>
   <li>Driver: <%= link_to @trip.driver.name, driver_path(@trip.driver_id) %></li>
   <li>Passenger: <%= link_to @trip.passenger.name, passenger_path(@trip.passenger_id) %></li>
-  <li>Rating: <%= @trip.rating %></li>
+  <li>
+    <% if @trip.rating.nil? %>
+      <%= render partial: "edit_rating" %>
+    <% else %>
+      Rating: <%= @trip.rating %>
+    <% end %>
+  </li>
   <li>Cost: $<%= ((@trip.cost.to_f)/100).round(2) %></li>
 
 </ul>
