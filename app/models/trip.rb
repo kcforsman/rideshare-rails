@@ -5,7 +5,8 @@ class Trip < ApplicationRecord
   validates :rating, numericality: { allow_nil: true }
 
   def self.create_new_trip(passenger)
-    driver = Driver.all.sample
+    driver = Driver.find_available_driver
+    return nil if driver.nil?
     date = Date.today.to_s
     rating = nil
     cost = rand(500..10000)

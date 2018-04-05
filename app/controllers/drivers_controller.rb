@@ -52,7 +52,7 @@ class DriversController < ApplicationController
     if @driver.driver_status.class == String
       @driver.driver_status = nil
     else
-      @driver.driver_status = "Available"
+      @driver.driver_status = "Unavailable"
     end
     @driver.save
     redirect_to driver_path(@driver.id)

@@ -14,13 +14,14 @@ class TripsController < ApplicationController
   def create
     if params[:passenger_id]
       passenger = Passenger.find_by(id: params[:passenger_id])
-      trip = Trip.create_new_trip(passenger)
-      if trip.save
-        redirect_to passenger_path(params[:passenger_id])
+      @trip = Trip.create_new_trip(passenger)
+      if !@trip.nil? && @trip.save
+        path = passenger_trip_path(params[:passenger_id], @trip.id)
       else
-        # needs to display an error message
-        render passenger_path(params[:passenger_id])
+        error = "No driver available at this time"
+        path = passenger_path(params[:passenger_id], error: error)
       end
+      redirect_to path
       # display some error to let them know it did work
     end
   end

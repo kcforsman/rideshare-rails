@@ -10,7 +10,9 @@
 </ul>
 
 <h3>
-  <% if @passenger.check_for_unrated_trip %>
+  <% if @error %>
+    <%= @error %>
+  <% else @passenger.check_for_unrated_trip %>
     <%= link_to "Request a Trip", passenger_trips_path(@passenger.id), method: :post %>
   <% end %>
 </h3>

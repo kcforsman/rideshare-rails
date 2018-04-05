@@ -4,6 +4,7 @@ class PassengersController < ApplicationController
   end
 
   def show
+    @error = params[:error] if params[:error]
     @passenger = Passenger.find_by(id: params[:id])
   end
 

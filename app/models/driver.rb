@@ -22,4 +22,10 @@ class Driver < ApplicationRecord
     end
     (total_ratings.to_f / number_of_rating).round(2)
   end
+
+  def self.find_available_driver
+    available_drivers = Driver.where(driver_status: nil)
+    return if available_drivers.empty?
+    available_drivers.sample
+  end
 end
