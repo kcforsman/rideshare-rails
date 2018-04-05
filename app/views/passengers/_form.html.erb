@@ -1,5 +1,16 @@
 <h2 class="my-class"><%=page_title%></h2>
 
+<% if @passenger.errors.any? %>
+<p> We're sorry something about you inputs isn't right. Please correct the mentioned fields.</p>
+  <ul class="errors">
+    <% @passenger.errors.each do | column, message | %>
+      <li>
+        <%= column.capitalize %> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<%end%>
+
 <%=form_for @passenger do |f| %>
 
 <%= f.label :name%>

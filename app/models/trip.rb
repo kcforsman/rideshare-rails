@@ -2,6 +2,8 @@ class Trip < ApplicationRecord
   belongs_to :driver
   belongs_to :passenger
 
+  validates :rating, numericality: { allow_nil: true }
+
   def self.create_new_trip(passenger)
     driver = Driver.all.sample
     date = Date.today.to_s

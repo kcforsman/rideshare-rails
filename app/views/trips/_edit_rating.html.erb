@@ -3,5 +3,11 @@
   <%= f.label :rating %>:
   <%= f.select :rating, (1..5) %>
   <%= f.submit %>
-
+  <% if @errors %>
+    <% @errors.each do | column, message | %>
+    <span class="rating_error">
+      <%= column.capitalize%> <%= message %>
+    </span>
+    <% end %>
+  <% end %>
 <%end%>

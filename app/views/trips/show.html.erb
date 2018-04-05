@@ -6,8 +6,6 @@
       <%= link_to 'delete', driver_trip_path(@driver.id, @trip.id), method: :delete %>
     <% elsif @passenger %>
       <%= link_to 'delete', passenger_trip_path(@passenger.id, @trip.id), method: :delete %>
-    <% else %>
-      <%= link_to 'delete', trip_path(@trip.id), method: :delete %>
     <% end %>
   </li>
 </ul>
@@ -18,7 +16,11 @@
   <li>Passenger: <%= link_to @trip.passenger.name, passenger_path(@trip.passenger_id) %></li>
   <li>
     <% if @passenger && ( @trip.rating.nil? || @edit == true ) %>
-      <%= render partial: "edit_rating" %>
+      <% if @errors %>
+        <%= render partial: "edit_rating" %>
+      <% else %>
+        <%= render partial: "edit_rating" %>
+      <% end %>
     <% elsif @driver && @trip.rating.nil? %>
       No Rating Recorded
     <% else %>
