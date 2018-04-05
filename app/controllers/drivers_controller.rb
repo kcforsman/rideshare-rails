@@ -47,6 +47,16 @@ class DriversController < ApplicationController
     end
   end
 
+  def unavailable
+    @driver = Driver.find_by(id: params[:id])
+    if @driver.driver_status.class == String
+      @driver.driver_status = nil
+    else
+      @driver.driver_status = "Available"
+    end
+    @driver.save
+    redirect_to driver_path(@driver.id)
+  end
 
   private
   def driver_params
