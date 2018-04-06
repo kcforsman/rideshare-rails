@@ -1,6 +1,6 @@
 <h2><%= @driver.name %>'s Details</h2>
 
-<ul>
+<ul id="buttons">
   <li>
     <%= link_to 'edit', edit_driver_path(@driver.id)%>
   </li>
@@ -10,17 +10,26 @@
 </ul>
 
 
+
+<h3 id="driver-trips">List of Trips</h3>
+<h3 id="driver-earned"> Total Money Earned: $<%= @driver.calculate_total_earned %></h3>
+<h3 id="avg-rating"> Average Rating: <%= @driver.calculate_rating_average %></h3>
+
 <%if @driver.driver_status.nil? %>
+    <span id="available-status">
     <%=link_to "Available Driver", available_driver_path(@driver.id), :id => "available_driver", method: :patch%>
+  </span>
 <%else%>
+  <span id="unavailable-status">
   <%= link_to "Unavailable Driver", unavailable_driver_path(@driver.id), :id => "unavailable_driver", method: :patch%>
+</span>
   <%end%>
 
 
-<h3> Total Money Earned: $<%= @driver.calculate_total_earned %></h3>
-<h3> Average Rating: <%= @driver.calculate_rating_average %></h3>
-<h3>List of Trips</h3>
-<ol>
+
+
+
+<ol id="passenger-or-driver-info">
   <% @driver.trips.each do |trip| %>
     <li>
       <%= link_to "Trip #{trip.id}", driver_trip_path(@driver.id, trip.id) %> :: Passenger - <%= trip.passenger.name %>
