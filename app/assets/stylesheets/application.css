@@ -144,3 +144,21 @@ h2{
   text-align:center;
   margin-top: 0px;
 }
+
+.edit_passenger{
+  display:flex;
+  flex-direction:column;
+  max-width: 200px;
+  align-content: center;
+  margin: 0 auto;
+}
+
+
+
+.edit_driver{
+  display:flex;
+  flex-direction:column;
+  max-width: 200px;
+  align-content: center;
+  margin: 0 auto;
+}
