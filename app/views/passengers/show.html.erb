@@ -3,10 +3,10 @@
 
 <ul id="buttons">
   <li>
-    <%= link_to 'edit', edit_passenger_path(@passenger.id)%>
+    <%= link_to 'edit', edit_passenger_path(@passenger.id), class: "delete-link"%>
   </li>
   <li>
-    <%= link_to 'delete', passenger_path(@passenger.id), method: :delete , data: {confirm: "Are you sure you want to delete #{@passenger.name}?"}%>
+    <%= link_to 'delete', passenger_path(@passenger.id), method: :delete , data: {confirm: "Are you sure you want to delete #{@passenger.name}?"}, class: "delete-link"%>
   </li>
 </ul>
 
@@ -15,12 +15,8 @@
 <h3 >
   <% if @error %>
     <%= @error %>
-<<<<<<< HEAD
   <% elsif @passenger.check_for_unrated_trip %>
-=======
-  <% else @passenger.check_for_unrated_trip %>
     <span id="request-trip">
->>>>>>> passenger_driver_detail_and_forms
     <%= link_to "Request a Trip", passenger_trips_path(@passenger.id), method: :post %>
   </span>
   <% end %>
