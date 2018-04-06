@@ -47,3 +47,41 @@ nav ul li a:hover {
 h1, h2, h3 {
   font-family: 'Fredericka the Great', cursive;
  }
+
+h2{
+  text-align: center;
+}
+
+
+#request-trip{
+  padding:15px;
+  background-color: blue;
+  margin-left:650px;
+  border-radius: 15px;
+  margin-top:0;
+}
+
+
+#buttons{
+  display: flex;
+  justify-content: center;
+}
+
+#buttons li  {
+  list-style-type: none;
+  margin:5px;
+  padding-right:15px;
+
+}
+
+#request-trip a{
+  text-decoration: none;
+}
+
+#request-trip:hover{
+  background-color:#86f442;
+}
+
+#passengers > li:nth-child(odd){
+  background-color:red;
+}
