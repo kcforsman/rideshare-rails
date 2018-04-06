@@ -70,6 +70,7 @@ main {
 
 h1, h2, h3 {
   font-family: 'Fredericka the Great', cursive;
+
   margin-bottom: 10px;
 }
 
@@ -145,4 +146,5 @@ table a:hover {
 #inline-edit {
   margin-left: 15px;
   font-size: .75em;
+
 }

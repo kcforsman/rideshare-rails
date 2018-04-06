@@ -1,6 +1,7 @@
-<h2><%= @passenger.name %>'s Details</h2>
 
-<ul>
+<h2><%= @passenger.name %>'s Trip History</h2>
+
+<ul id="buttons">
   <li>
     <%= link_to 'edit', edit_passenger_path(@passenger.id)%>
   </li>
@@ -9,18 +10,23 @@
   </li>
 </ul>
 
-<h3>
+<h3 id="list-of-trips">List of Trips</h3>
+<h3 id="price-spent"> Total Money Spent: $<%= @passenger.calculate_total_charged %></h3>
+<h3 >
   <% if @error %>
     <%= @error %>
+<<<<<<< HEAD
   <% elsif @passenger.check_for_unrated_trip %>
+=======
+  <% else @passenger.check_for_unrated_trip %>
+    <span id="request-trip">
+>>>>>>> passenger_driver_detail_and_forms
     <%= link_to "Request a Trip", passenger_trips_path(@passenger.id), method: :post %>
+  </span>
   <% end %>
 </h3>
 
-
-<h3> Total Money Spent: $<%= @passenger.calculate_total_charged %></h3>
-<h3>List of Trips</h3>
-<ol>
+<ol id="passenger-or-driver-info">
   <% @passenger.trips.each do |trip| %>
     <li>
       <%= link_to "Trip #{trip.id}", passenger_trip_path(@passenger.id, trip.id) %> :: Driver - <%= trip.driver.name %>
