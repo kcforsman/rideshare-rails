@@ -1,8 +1,17 @@
-<h1>Passengers</h1>
-<ul>
-<%@passengers.each do |r|%>
-  <li>
-  <%=link_to r.name, passenger_path(r.id) %>
-  </li>
+<h2>Passengers</h2>
+<table class="list-users">
+  <tr>
+    <th>ID</th>
+    <th>Passenger Name</th>
+  </tr>
+  <%@passengers.each do |r|%>
+    <tr>
+      <td>
+        <%= r.id %>
+      </td>
+      <td>
+        <%=link_to r.name, passenger_path(r.id)%>
+      </td>
+    </tr>
   <%end%>
-</ul>
+</table>

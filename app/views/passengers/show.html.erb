@@ -12,7 +12,7 @@
 <h3>
   <% if @error %>
     <%= @error %>
-  <% else @passenger.check_for_unrated_trip %>
+  <% elsif @passenger.check_for_unrated_trip %>
     <%= link_to "Request a Trip", passenger_trips_path(@passenger.id), method: :post %>
   <% end %>
 </h3>

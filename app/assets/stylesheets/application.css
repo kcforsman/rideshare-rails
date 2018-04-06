@@ -18,25 +18,45 @@
   font-family: 'Nixie One', cursive;
   background-color: rgb(128, 223, 255);
   color: black;
+  min-width: 340px;
+  font-weight: bold;
  }
 
-nav ul {
+nav {
+  border-bottom: 3px solid black;
   width: 100%;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  background-color: rgb(128, 223, 255);
+}
+
+ul {
+  width: 100%;
+  min-width: 340px;
   display: inline-flex;
   list-style-type: none;
   font-size: .5em;
   justify-content: space-around;
   flex-wrap: nowrap;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 nav ul li a {
-  text-decoration: none;
   font-weight: bold;
   padding: 5px;
 }
 
 a:link, a:visited {
   color: #002533;
+  text-shadow: .5px .5px gray;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #002533;
+  text-shadow: .5px .5px white;
 }
 
 nav ul li a:hover {
@@ -44,6 +64,87 @@ nav ul li a:hover {
   color: #ccf2ff;
 }
 
+main {
+  width: 95%;
+  margin: 50px auto;
+  text-align: center;
+}
+
 h1, h2, h3 {
   font-family: 'Fredericka the Great', cursive;
- }
+  margin-bottom: 10px;
+}
+
+/* specific to homepage */
+.homepage_button:link, .homepage_button:visited {
+  display: inline-block;
+  padding: 25px 0;
+  background-color: #002533;
+  color: #ccf2ff;
+  width: 150px;
+  margin: 10px;
+}
+
+.homepage_button:hover {
+  background-color: #ccf2ff;
+  color: #002533;
+  border: 2px solid #002533;
+}
+
+/* styles specific to tables */
+table {
+  text-align: left;
+  margin: auto;
+  margin-top: 10px;
+}
+
+th {
+  font-family: 'Fredericka the Great', cursive;
+}
+
+tr > * {
+  border-bottom: 1px solid black;
+  padding: 2.5px 20px;
+}
+
+tr:first-child > * {
+  border-top: 1px solid black;
+}
+
+tr > *:first-child {
+  text-align: center;
+}
+
+tr > :last-child, table tr > :last-child {
+  border-left: 1px solid gray;
+}
+
+table a:link, table a:visited {
+  text-shadow: none;
+}
+
+table a:hover {
+  text-shadow: .5px .5px white;
+}
+
+/* styles specific to Trip detail pages */
+.delete-link {
+  padding: 7.5px 10px;
+  font-size: 1.5em;
+}
+
+.delete-link:link, .delete-link:visited {
+  background-color: #002533;
+  color: #ccf2ff;
+}
+
+.delete-link:hover {
+  background-color: rgb(128, 223, 255);
+  color: #002533;
+  border: 1px solid #002533;
+}
+
+#inline-edit {
+  margin-left: 15px;
+  font-size: .7em;
+}

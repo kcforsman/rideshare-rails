@@ -3,33 +3,51 @@
 <ul>
   <li>
     <% if @driver %>
-      <%= link_to 'delete', driver_trip_path(@driver.id, @trip.id), method: :delete %>
+      <%= link_to 'delete trip', driver_trip_path(@driver.id, @trip.id), method: :delete, data: {confirm: "Are you sure?"}, class: "delete-link" %>
     <% elsif @passenger %>
-      <%= link_to 'delete', passenger_trip_path(@passenger.id, @trip.id), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to 'delete trip', passenger_trip_path(@passenger.id, @trip.id), method: :delete, data: {confirm: "Are you sure?"}, class: "delete-link" %>
     <% end %>
   </li>
 </ul>
 
-<ul>
-  <li>Date: <%= @trip.date %></li>
-  <li>Driver: <%= link_to @trip.driver.name, driver_path(@trip.driver_id) %></li>
-  <li>Passenger: <%= link_to @trip.passenger.name, passenger_path(@trip.passenger_id) %></li>
-  <li>
-    <% if @passenger && ( @trip.rating.nil? || @edit == true ) %>
+<table>
+  <tr>
+    <th>ID</th>
+    <td><%= @trip.id %></td>
+  </tr>
+  <tr>
+    <th>Driver</th>
+    <td><%= link_to @trip.driver.name, driver_path(@trip.driver_id) %></td>
+   </tr>
+  <tr>
+    <th>Passenger</th>
+    <td><%= link_to @trip.passenger.name, passenger_path(@trip.passenger_id) %></td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td><%= @trip.date %></td>
+  </tr>
+  <tr>
+    <th>Rating</th>
+    <td>
+      <% if @passenger && ( @trip.rating.nil? || @edit == true ) %>
       <% if @errors %>
         <%= render partial: "edit_rating" %>
       <% else %>
         <%= render partial: "edit_rating" %>
       <% end %>
-    <% elsif @driver && @trip.rating.nil? %>
-      No Rating Recorded
-    <% else %>
-      Rating: <%= @trip.rating %>
-      <% if @passenger %>
-        <%= link_to 'edit', edit_passenger_trip_path(@passenger.id, @trip.id) %>
+      <% elsif @driver && @trip.rating.nil? %>
+        NaN
+      <% else %>
+        <%= @trip.rating %>
+        <% if @passenger %>
+          <%= link_to 'edit', edit_passenger_trip_path(@passenger.id, @trip.id), id: "inline-edit" %>
+        <% end %>
       <% end %>
-    <% end %>
-  </li>
-  <li>Cost: $<%= ((@trip.cost.to_f)/100).round(2) %></li>
-
-</ul>
+    </td>
+  </tr>
+  <tr>
+    <th>Cost</th>
+    <td>$<%= ((@trip.cost.to_f)/100).round(2) %></td>
+    </tr>
+</table>

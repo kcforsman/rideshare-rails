@@ -1,8 +1,17 @@
 <h2>Drivers</h2>
-<ul>
-<%@drivers.each do |r|%>
-  <li>
-  <%=link_to r.name, driver_path(r.id)%>
-  </li>
+<table class="list-users">
+  <tr>
+    <th>ID</th>
+    <th>Driver Name</th>
+  </tr>
+  <%@drivers.each do |r|%>
+    <tr>
+      <td>
+        <%= r.id %>
+      </td>
+      <td>
+        <%=link_to r.name, driver_path(r.id)%>
+      </td>
+    </tr>
   <%end%>
-</ul>
+</table>
