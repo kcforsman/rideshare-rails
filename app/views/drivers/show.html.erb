@@ -20,8 +20,6 @@
 <h3> Total Money Earned: $<%= @driver.calculate_total_earned %></h3>
 <h3> Average Rating: <%= @driver.calculate_rating_average %></h3>
 <h3>List of Trips</h3>
-  <!-- <%=button_to "Checkout", (:disabled @driver.id == @driver.id) %>
-  <button type="button">Click Me!</button> -->
 <ol>
   <% @driver.trips.each do |trip| %>
     <li>
